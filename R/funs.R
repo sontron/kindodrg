@@ -326,11 +326,11 @@ CNDRGGrouper<-function(data,ADRGRulesLst,groupVars=c('age','bornWt','statusOut',
 #' CNDRGAll takes fn_Trans fn_excl fn_cc and CNDRGGrouper together for grouping
 #' 
 #' @export
-CNDRGAll<-function(data,adrgruleslst=CNDRGRulesLst20170619,trans=T){
+CNDRGAll<-function(data,adrgruleslst=CNDRGRulesLst20170620,trans=T){
   
   require(dplyr)
   if(trans) {
-    fn_Trans(data=data,id='id') %>% fn_ccexcl(data=.) %>% fn_cc(data=.) %>% CNDRGGrouper(data=.,ADRGRulesLst=adrgruleslst)->res
+    fn_Trans(data=data,id='id',drgruleslst=adrgruleslst) %>% fn_ccexcl(data=.) %>% fn_cc(data=.) %>% CNDRGGrouper(data=.,ADRGRulesLst=adrgruleslst)->res
   } else {
     fn_ccexcl(data=data) %>% fn_cc(data=.) %>% CNDRGGrouper(data=.,ADRGRulesLst=adrgruleslst)->res
   }
