@@ -55,8 +55,8 @@ fn_null<-function(){
   res$LOSRuleDf[2,1]<-'5-Inf'
   res$ageRuleDf[4,1]<-'17-Inf'
   #res$ageRuleDf[4,1]<-'17-Inf'
-  res->CNDRGRulesLst20170619
-  save(CNDRGRulesLst20170619,file='d:/github/kindodrg/data/CNDRGRulesLst20170619.RData')
+  res->CNDRGRulesLst20170620
+  save(CNDRGRulesLst20170620,file='d:/github/kindodrg/data/CNDRGRulesLst20170620.RData')
   
 }
 
