@@ -1,0 +1,17 @@
+Package: kindodrg
+Type: Package
+Title: cndrg grouper functions
+Version: 0.1.0
+Date: 2017-06-19
+Author: sontron
+Maintainer: son tron <sontron@foxmail.com>
+Description: cndrg grouper
+License: MIT
+LazyData: true
+Collate:
+    'funs.R'
+RoxygenNote: 5.0.1
+Imports:
+  compiler
+LazyData: true
+ByteCompile: true
