@@ -321,13 +321,27 @@ CNDRGGrouper<-function(data,ADRGRulesLst,groupVars=c('age','bornWt','statusOut',
 }
 
 
-#' CNDRGGrouperAll
+#' CNDRGAll
 #' 
-#' CNDRGGrouper all takes fn_Trans fn_excl fn_cc and CNDRGGrouper together for grouping
+#' CNDRGAll takes fn_Trans fn_excl fn_cc and CNDRGGrouper together for grouping
 #' 
 #' @export
-CNDRGGrouperAll<-function(data,adrgruleslst=CNDRGRulesLst20170619){
+CNDRGAll<-function(data,adrgruleslst=CNDRGRulesLst20170619,trans=T){
+  
   require(dplyr)
-  fn_Trans(data=data,id='id') %>% fn_ccexcl(data=.) %>% fn_cc(data=.) %>% CNDRGGrouper(data=.,ADRGRulesLst=adrgruleslst)->res
+  if(trans) {
+    fn_Trans(data=data,id='id') %>% fn_ccexcl(data=.) %>% fn_cc(data=.) %>% CNDRGGrouper(data=.,ADRGRulesLst=adrgruleslst)->res
+  } else {
+    fn_ccexcl(data=data) %>% fn_cc(data=.) %>% CNDRGGrouper(data=.,ADRGRulesLst=adrgruleslst)->res
+  }
+  
   return(res)
 }
+
+#' CNDRGAllCmp
+#' 
+#' compiler version of CNDRGAll
+#' 
+#' @export
+#' @import compiler
+CNDRGAllCmp<-cmpfun(CNDRGAll)
